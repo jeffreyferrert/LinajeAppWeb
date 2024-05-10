@@ -32,7 +32,6 @@ const cardContent = {
   }
 }
 
-
 const Landing = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
