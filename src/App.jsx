@@ -10,7 +10,7 @@ function App() {
            fontFamily={'Poppins, sans-serif'}>
       <Navbar/>
       <Landing/>
-      {/*<Footer/>*/}
+      <Footer/>
     </Stack>
   )
 }
