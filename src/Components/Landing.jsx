@@ -1,39 +1,37 @@
 import Button from '@mui/material/Button';
-import MailIcon from '@mui/icons-material/Mail';
-import {Box, CardMedia, Stack, TextField, useMediaQuery, useTheme} from "@mui/material";
+import {Box, Stack, TextField, useMediaQuery, useTheme} from "@mui/material";
 import AbcIcon from '@mui/icons-material/Abc';
 import {Grid,} from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import SearchIcon from '@mui/icons-material/Search';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 const cardContent = {
   0: {
-    icon: AbcIcon,
-    title: 'VALUE PROP 1',
-    description: 'description1'
+    icon: AccessTimeIcon,
+    title: 'Experiencia',
+    description: 'Hecho por criadores con décadas de experiencia para toda la comunidad gallística.'
   },
   1: {
-    icon: AbcIcon,
-    title: 'VALUE PROP 2',
-    description: 'description2'
+    icon: PlaylistAddCheckIcon,
+    title: 'Conveniencia',
+    description: 'Conecta todo el historial de los animales, linajes, peleas, fotos y videos en una plataforma móvil personal.'
   },
   2: {
-    icon: AbcIcon,
-    title: 'VALUE PROP 3',
-    description: 'description3'
+    icon: SearchIcon,
+    title: 'Transparencia',
+    description: 'Conoce de forma correcta y simple a los mejores individuos y linajes.'
   },
-  3: {
-    icon: AbcIcon,
-    title: 'VALUE PROP 4',
-    description: 'description4'
-  }
 }
 
 const Landing = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isExtraLargeScreen = useMediaQuery(theme.breakpoints.down('xl'));
 
   return (
     <Stack justifyContent={'center'} alignItems={'center'}
@@ -51,11 +49,12 @@ const Landing = () => {
           alignItems={'center'}
           sx={{width: isSmallScreen ? '100%' : '30%', minWidth: '300px', fontWeight: '300'}}
         >
-          <h1>LinajeApp</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur.<br/> Ipsum nam nulla reprehenderit.</p>
+          <h1>Linajeapp</h1>
+          <p style={{width: '90%', marginTop: '-10px', textAlign: 'center'}}>Plataforma digital que ayuda en la
+            crianza animal para lograr las mejores decisiones</p>
           <br/>
-          <Button variant="contained" endIcon={<MailIcon/>} sx={{background: 'black'}}>
-            Contactanos
+          <Button variant="contained" sx={{background: 'black', border: '1px solid gray', borderRadius: '30px'}}>
+            Contáctanos
           </Button>
         </Stack>
 
@@ -77,31 +76,45 @@ const Landing = () => {
 
       {/* FLOATING VALUE PROPS */}
       <Stack
+        id="producto"
         justifyContent={'center'}
         alignItems={'center'}
         sx={{
           position: 'absolute',
-          top: isSmallScreen ? '16%' : '23%',
+          top: isSmallScreen ? '14%' : '22%',
           minHeight: '100px',
-          width: '80%',
+          width: isMediumScreen ? '85%' : isExtraLargeScreen ? '80%' : '70%',
           minWidth: isSmallScreen ? undefined : '600px',
           background: 'hsla(0,0%,100%,.9)',
           border: '1px solid black',
           borderRadius: '5px',
-          textAlign: 'center'
+          textAlign: 'center',
         }}
       >
         <h3>SLOGAN O ALGO CORTO || 2 ORACIONES MAXIMO</h3>
-        <Stack direction={isSmallScreen ? 'column' : 'row'} justifyContent={'space-around'} width={'100%'}
-               marginTop={'-15px'}>
-
+        <Stack
+          direction={isSmallScreen ? 'column' : 'row'}
+          justifyContent={'space-around'}
+          width={'100%'}
+          marginTop={'-15px'}
+        >
           {Object.values(cardContent).map((card, index) => {
             const Icon = card.icon;
             return (
-              <Stack justifyContent={'center'} alignItems={'center'} key={index}
-                     sx={{maxWidth: 300, padding: '10px', fontWeight: '300', margin: '0 auto'}}>
+              <Stack
+                justifyContent={'center'} alignItems={'center'} key={index}
+                sx={{
+                  fontSize: isMediumScreen ? '0.8rem' : isExtraLargeScreen ? '0.9rem' : '0.85rem',
+                  maxWidth: isMediumScreen ? 300 : 300,
+                  padding: '10px',
+                  fontWeight: '300',
+                  margin: '0 auto'
+                }}
+              >
                 <Icon/>
-                {card.title}
+                <Typography variant="h6" sx={{fontWeight: 'bold'}}>
+                  {card.title}
+                </Typography>
                 <br/>
                 {card.description}
               </Stack>
@@ -112,13 +125,16 @@ const Landing = () => {
       </Stack>
 
       {/*  APP FEATURES */}
-      <Stack sx={{minHeight: '200px', width: '100%', background: '#FCEFE1', color: '#6C4D40'}}>
+      <Stack
+        sx={{
+          minHeight: '200px', width: '100%', background: '#FCEFE1', color: '#6C4D40',
+        }}>
         <Stack
           justifyContent={'space-around'}
           alignItems={'center'}
           textAlign={'center'}
           direction={isSmallScreen ? 'column' : 'row'}
-          marginTop={isSmallScreen ? '400px' : '130px'}
+          marginTop={isSmallScreen ? '450px' : isMediumScreen ? '180px' : '130px'}
         >
           <Box maxWidth={'200px'} margin={'0 auto'}><p>FEATURE 1</p><p>FEATURE 1</p><p>FEATURE 1</p></Box>
           <Box sx={{
@@ -139,7 +155,7 @@ const Landing = () => {
 
       {/* NOSOTROS */}
       <Stack
-        alignItems={'center'}
+        id="nosotros" alignItems={'center'}
         sx={{minHeight: '400px', width: '100%', background: 'hsla(0,0%,100%,.9)',}}
       >
         <h1 style={{margin: '20px'}}>Nosotros</h1>
@@ -182,7 +198,7 @@ const Landing = () => {
 
       {/* TESTIMONIOS */}
       <Stack
-        alignItems={'center'}
+        id="testimonios" alignItems={'center'}
         sx={{minHeight: '400px', width: isSmallScreen ? '100%' : isMediumScreen ? '80%' : '70%', padding: '1.5rem 0'}}
       >
         <h1
@@ -202,37 +218,8 @@ const Landing = () => {
           gap={'20px'}
           sx={{width: isMediumScreen ? '100%' : '80%', margin: '0 auto'}}
         >
-          <Stack>
-            <Card sx={{width: isSmallScreen ? 320 : 275, margin: '0 auto'}}>
-              <CardContent>
-                <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
-                  TESTIMONIO 1
-                </Typography>
-                <CardMedia
-                  component="img"
-                  height="110"
-                  image="/static/images/cards/paella.jpg"
-                  alt="IMAGEN"
-                />
-                <Typography sx={{mb: 1.5}} color="text.secondary">
-                  NOMBRE USUARIO
-                </Typography>
-                <Typography variant="body2">
-                  Lorem ipsum dolor sit amet, consectetur
-                </Typography>
-              </CardContent>
-            </Card>
-          </Stack>
-
           <Stack gap={'20px'}>
             <Card sx={{display: 'flex', maxWidth: isSmallScreen ? 320 : 400, margin: '0 auto'}}>
-              <CardMedia
-                component="img"
-                height="100"
-                width="100"
-                image="/static/images/cards/paella.jpg"
-                alt="IMAGEN"
-              />
               <Box sx={{display: 'flex', flexDirection: 'column'}}>
                 <CardContent sx={{width: 200}}>
                   <Typography sx={{mb: 1.5, fontSize: 11}} color="text.secondary" gutterBottom>
@@ -249,13 +236,40 @@ const Landing = () => {
             </Card>
 
             <Card sx={{display: 'flex', maxWidth: isSmallScreen ? 320 : 400, margin: '0 auto'}}>
-              <CardMedia
-                component="img"
-                height="100"
-                width="100"
-                image="/static/images/cards/paella.jpg"
-                alt="IMAGEN"
-              />
+              <Box sx={{display: 'flex', flexDirection: 'column'}}>
+                <CardContent sx={{width: 200}}>
+                  <Typography sx={{mb: 1.5, fontSize: 11}} color="text.secondary" gutterBottom>
+                    TESTIMONIO 2
+                  </Typography>
+                  <Typography sx={{fontSize: 11}} color="text.secondary">
+                    NOMBRE USUARIO
+                  </Typography>
+                  <Typography variant="body2" sx={{fontSize: 11}}>
+                    Lorem ipsum dolor sit amet, consectetur
+                  </Typography>
+                </CardContent>
+              </Box>
+            </Card>
+          </Stack>
+
+          <Stack gap={'20px'}>
+            <Card sx={{display: 'flex', maxWidth: isSmallScreen ? 320 : 400, margin: '0 auto'}}>
+              <Box sx={{display: 'flex', flexDirection: 'column'}}>
+                <CardContent sx={{width: 200}}>
+                  <Typography sx={{mb: 1.5, fontSize: 11}} color="text.secondary" gutterBottom>
+                    TESTIMONIO 2
+                  </Typography>
+                  <Typography sx={{fontSize: 11}} color="text.secondary">
+                    NOMBRE USUARIO
+                  </Typography>
+                  <Typography variant="body2" sx={{fontSize: 11}}>
+                    Lorem ipsum dolor sit amet, consectetur
+                  </Typography>
+                </CardContent>
+              </Box>
+            </Card>
+
+            <Card sx={{display: 'flex', maxWidth: isSmallScreen ? 320 : 400, margin: '0 auto'}}>
               <Box sx={{display: 'flex', flexDirection: 'column'}}>
                 <CardContent sx={{width: 200}}>
                   <Typography sx={{mb: 1.5, fontSize: 11}} color="text.secondary" gutterBottom>
@@ -274,13 +288,6 @@ const Landing = () => {
 
           <Stack gap={'20px'} display={isMediumScreen ? 'none' : 'inherit'}>
             <Card sx={{display: 'flex', maxWidth: isSmallScreen ? 320 : 400, margin: '0 auto'}}>
-              <CardMedia
-                component="img"
-                height="100"
-                width="100"
-                image="/static/images/cards/paella.jpg"
-                alt="IMAGEN"
-              />
               <Box sx={{display: 'flex', flexDirection: 'column'}}>
                 <CardContent sx={{width: 200}}>
                   <Typography sx={{mb: 1.5, fontSize: 11}} color="text.secondary" gutterBottom>
@@ -297,13 +304,6 @@ const Landing = () => {
             </Card>
 
             <Card sx={{display: 'flex', maxWidth: isSmallScreen ? 320 : 400, margin: '0 auto'}}>
-              <CardMedia
-                component="img"
-                height="100"
-                width="100"
-                image="/static/images/cards/paella.jpg"
-                alt="IMAGEN"
-              />
               <Box sx={{display: 'flex', flexDirection: 'column'}}>
                 <CardContent sx={{width: 200}}>
                   <Typography sx={{mb: 1.5, fontSize: 11}} color="text.secondary" gutterBottom>
@@ -325,7 +325,7 @@ const Landing = () => {
 
       {/* CONTACTANOS */}
       <Stack
-        alignItems={'center'}
+        id="contacto" alignItems={'center'}
         sx={{
           minHeight: '400px',
           width: '100%',
@@ -342,15 +342,15 @@ const Landing = () => {
               textAlign: isSmallScreen ? 'center' : 'inherit'
             }}
           >
-            Contactanos
+            Contacto
           </h1>
 
           <Grid container spacing={3} justifyContent={isSmallScreen ? 'center' : isMediumScreen ? 'left' : 'center'}>
             <Grid item xs={10} sm={5} xl={3}>
               <Stack direction="column" spacing={2}>
                 <TextField id="outlined-basic" label="Nombre y Apellido" variant="outlined" fullWidth/>
-                <TextField id="outlined-basic" label="Correo Electronico" variant="outlined" fullWidth/>
                 <TextField id="outlined-basic" label="Número de celular" variant="outlined" fullWidth/>
+                <TextField id="outlined-basic" label="Correo Electronico" variant="outlined" fullWidth/>
               </Stack>
             </Grid>
             <Grid item xs={10} sm={7} xl={5}>
@@ -360,7 +360,11 @@ const Landing = () => {
 
           <Grid container spacing={3} justifyContent={'center'} mt={'1px'}>
             <Grid item xs={10} sm={5} xl={3}>
-              <Button variant="contained" color="primary" fullWidth>Submit</Button>
+              <Button variant="contained" sx={{background: 'black', border: '1px solid gray', borderRadius: '30px'}}
+                      fullWidth
+              >
+                Enviar
+              </Button>
             </Grid>
           </Grid>
         </Stack>
