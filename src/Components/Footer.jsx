@@ -9,7 +9,7 @@ const Footer = () => {
         width: '100%'
       }}
     >
-      Linajeapp 2024
+      Linajeapp 2024 TM
     </Stack>
   )
 }
