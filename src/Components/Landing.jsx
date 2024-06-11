@@ -1,6 +1,5 @@
 import Button from '@mui/material/Button';
 import {Box, Stack, TextField, useMediaQuery, useTheme} from "@mui/material";
-import AbcIcon from '@mui/icons-material/Abc';
 import {Grid,} from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -53,7 +52,12 @@ const Landing = () => {
           <p style={{width: '90%', marginTop: '-10px', textAlign: 'center'}}>Plataforma digital que ayuda en la
             crianza animal para lograr las mejores decisiones</p>
           <br/>
-          <Button variant="contained" sx={{background: 'black', border: '1px solid gray', borderRadius: '30px'}}>
+          <Button variant="contained" sx={{
+            background: 'black',
+            border: '1px solid gray',
+            borderRadius: '30px',
+            textTransform: 'capitalize'
+          }}>
             Contáctanos
           </Button>
         </Stack>
@@ -348,7 +352,7 @@ const Landing = () => {
           <Grid container spacing={3} justifyContent={isSmallScreen ? 'center' : isMediumScreen ? 'left' : 'center'}>
             <Grid item xs={10} sm={5} xl={3}>
               <Stack direction="column" spacing={2}>
-                <TextField id="outlined-basic" label="Nombre y Apellido" variant="outlined" fullWidth/>
+                <TextField id="outlined-basic" label="Nombres y Apellidos" variant="outlined" fullWidth/>
                 <TextField id="outlined-basic" label="Número de celular" variant="outlined" fullWidth/>
                 <TextField id="outlined-basic" label="Correo Electronico" variant="outlined" fullWidth/>
               </Stack>
@@ -360,8 +364,12 @@ const Landing = () => {
 
           <Grid container spacing={3} justifyContent={'center'} mt={'1px'}>
             <Grid item xs={10} sm={5} xl={3}>
-              <Button variant="contained" sx={{background: 'black', border: '1px solid gray', borderRadius: '30px'}}
-                      fullWidth
+              <Button variant="contained" sx={{
+                background: 'black',
+                border: '1px solid gray',
+                borderRadius: '30px',
+                textTransform: 'capitalize'
+              }} fullWidth
               >
                 Enviar
               </Button>
